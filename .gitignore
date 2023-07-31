@@ -161,3 +161,4 @@ cython_debug/
 
 .DS_Store
 dump.rdb
+celerybeat-schedule.db
