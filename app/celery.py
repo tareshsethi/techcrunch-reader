@@ -17,7 +17,7 @@ class CeleryConfig:
     beat_schedule = {
         "time_scheduler": {
             "task": "app.tasks.ingest_new_techcrunch_articles",
-            "schedule": crontab(hour=4, minute=0),  # 4pm UTC = 9am PST
+            "schedule": crontab(minute=f'*/5'),
         }
     }
 
