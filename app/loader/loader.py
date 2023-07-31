@@ -29,6 +29,12 @@ class IncrementalTechCrunchLoader:
                 json.dump(dataset, f)
             from_json = name
 
+        # Confirm there is data in the dataset json, otherwise return
+        with open(from_json, 'r') as f:
+            data = json.load(f)['data']
+            if len(data) == 0:
+                return
+
         loader = JSONLoader(
             from_json,
             jq_schema='.data[]',
