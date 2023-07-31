@@ -4,6 +4,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.memory.chat_message_histories import RedisChatMessageHistory
 
+from app.env import REDIS_URL
 from app.pinecone_client import pinecone_client
 
 
@@ -12,7 +13,7 @@ class LLMSession:
         self.session_id = session_id
         self.llm = ChatOpenAI(model_name='gpt-3.5-turbo')
         self.message_history = RedisChatMessageHistory(
-            url="redis://localhost:6379/0", ttl=600, session_id=self.session_id
+            url=REDIS_URL, ttl=600, session_id=self.session_id
         )
         self.memory = ConversationBufferWindowMemory(
             k=5,
