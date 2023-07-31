@@ -42,10 +42,11 @@ class PineConeClient:
             filter={"epoch_timestamp": {"$gte": yesterday_epoch}},
         )['matches']
         if len(documents) == 0:
-            return yesterday_epoch
+            return yesterday
         epoch_timestamps = [doc['metadata']['epoch_timestamp'] for doc in documents]
         latest = list(reversed(sorted(epoch_timestamps)))[0]
-        return latest
+        latest_datetime = datetime.datetime.fromtimestamp(latest, tz=pytz.utc)
+        return latest_datetime
 
     def get_all_vectors_stale(self, date):
         """Returns all stale vectors' ids, separated by commas, and the number of vectors found,
