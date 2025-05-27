@@ -1,6 +1,6 @@
 # techcrunch-reader 
 
-[This was a take-home assignment. Spent a weekend on it] assistant for parsing through recent tech crunch articles, updated daily
+[This was a open-ended takehome (I chose the project). Spent a weekend on it] assistant for parsing through recent tech crunch articles, updated daily
 
 ### How to run
 
